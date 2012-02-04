@@ -51,12 +51,20 @@ class Manager:
     def calcDebt(self, ClientName):
         '''Calculates total debt of a costumer'''
 
+    def listClientDebt(self,name):
+        for cl in clientList:
+            if cl.name == name:
+                cl.printTransactionList()
+            else: print 'Client not found!\n'
+
     def makeTransaction(self):
        '''Makes a transaction '''
        name = raw_input("Client: ")
        for cl in clientList:
            if cl.name == name:
                cl.buyIce()
+               self.listClientDebt(name)
            else: print 'Client not found!\n'
 
+    
     

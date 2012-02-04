@@ -32,6 +32,15 @@ class Client:
 		Client.population -= 1
 
 	
+	def printTransactionList(self):
+		print ("Transaction List")
+		for tr in self.transactionList:
+			print tr.quantity
+			print tr.price
+			print tr.fiado
+
+
+
 	def howMany(self):
 		'''Imprime o numero de Clientes'''
 		if Client.population == 1:
@@ -52,6 +61,9 @@ class Client:
 			fiado = False
 
 		self.transactionList.append(Transaction(quant, price, fiado))		
+
+	
+
 
 class Transaction:
 	''' Clients' transactions and debts ''' 
