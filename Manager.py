@@ -12,59 +12,71 @@ class Manager:
  
     def printClientList(self):
         i=0
-	print 'Client List: '
+	print ("Client List: ")
         for cl in clientList:
             i+=1
-            print ('%d - %s'  % (i, cl.name ))
+            print ("%d - %s"  % (i, cl.name ))
 
     def createClient(self):
         '''Create a client'''
-        name = raw_input('Nome do Cliente: ')
+        name = raw_input("Nome do Cliente: ")
         clientList.append(Classes.Client(name))
-        print '\n Client ' + name + ' was born! \n'
+        print ("\n Client " + name + " was born! \n")
        
     def removeClient(self):
         '''Remove Client from database'''
-        name = raw_input('Nome do Cliente a remover: ')
+        name = raw_input("Nome do Cliente a remover: ")
+
+        #procura cliente
         for cl in clientList:
-            if cl.name == name:
+            if(cl.name == name):
                 cl.delete() # como eliminar objecto???
                 clientList.remove(cl)
 
     def changeName(self):
-        name = raw_input('Nome do Cliente a remover: ')
+        name = raw_input("Nome do Cliente a remover: ")
+        #procura cliente
         for cl in clientList:
-            if cl.name == name:
+            if(cl.name == name):
                 cl.setName(name)
             else: 
-                print 'Client %s not found.\n' % name 
+                print ("Client %s not found.\n" % name) 
 
     def insertClient(self):
         '''Add Client to database'''  
     
+
     def howMany(self):
         Classe.Client.howMany()
+
 
     def calcAVG(self, clientName, frequency):
         '''calculates average incomes from a client over weeks, day...'''
 
+
     def calcDebt(self, ClientName):
         '''Calculates total debt of a costumer'''
 
+
     def listClientDebt(self,name):
         for cl in clientList:
-            if cl.name == name:
+            if(cl.name == name):
                 cl.printTransactionList()
-            else: print 'Client not found!\n'
+            else: 
+                print ("Client not found!\n")
+
 
     def makeTransaction(self):
        '''Makes a transaction '''
        name = raw_input("Client: ")
        for cl in clientList:
-           if cl.name == name:
+           if(cl.name == name):
+               print(name + cl.name)
                cl.buyIce()
                self.listClientDebt(name)
-           else: print 'Client not found!\n'
+           else: 
+               print ("Client not found!\n")
+    
 
     
     

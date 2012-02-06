@@ -2,7 +2,6 @@
 
 import MySQLdb
 import io
-import Classes
 import Manager
 
 ListaClientes = []
@@ -25,17 +24,18 @@ def menu():
 	print("4 - Register")
 	print("5 - Debts")
 	print("6 - Exit")
-	print '\n'
+	print ("\n")
 	
 	try:
-		cmd =  input('Please enter a value:')
+		cmd =  input("Please enter a value:")
 	except:
 		print("not a number")
 		cmd  = 6
 		
 	if(cmd == 0):
-		print 'Venda: \n'
+		print ("Venda: \n")
 		Man.makeTransaction()
+
 		
 	if(cmd == 1):
 	    	Man.createClient()
@@ -46,13 +46,19 @@ def menu():
 		Man.removeClient()
 		Man.printClientList()
 		
+
 	elif(cmd == 3):
 		Man.printClientList()
 
+
 	elif(cmd == 4):
 		print("3 - Registar Compra")
+
+
 	elif(cmd == 5):
 		print("4 - Ver Fiados")
+
+
 	elif(cmd == 6):
 		print("Bye")
 		exit()
