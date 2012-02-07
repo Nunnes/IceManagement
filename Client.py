@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 
-''' ISTO EH PARA IR COM OS PORCOS '''
-
 class Client:
 	'''Represents a Client.'''
 	population = 0
@@ -62,16 +60,4 @@ class Client:
 		elif optional == "n":
 			fiado = False
 
-		self.transactionList.append(Transaction(quant, price, fiado))		
-
-	
-
-
-class Transaction:
-	''' Clients' transactions and debts ''' 
-	
-	def __init__(self, quantity, price, fiado = False):
-		'''Initializes the transaction'''
-		self.quantity = quantity
-		self.price = price
-		self.fiado = fiado
+		self.transactionList.append(Transaction(quant, price, fiado))

@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-import MySQLdb
 import io
 import Manager
 
