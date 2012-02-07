@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import Classes
+import Client
 
 clientList = []
 
@@ -20,7 +20,7 @@ class Manager:
     def createClient(self):
         '''Create a client'''
         name = raw_input("Nome do Cliente: ")
-        clientList.append(Classes.Client(name))
+        clientList.append(Client.Client(name))
         print ("\n Client " + name + " was born! \n")
        
     def removeClient(self):
@@ -47,7 +47,7 @@ class Manager:
     
 
     def howMany(self):
-        Classe.Client.howMany()
+        Client.Client.howMany()
 
 
     def calcAVG(self, clientName, frequency):
