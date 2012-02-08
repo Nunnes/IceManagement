@@ -1,5 +1,7 @@
+misc/
+__pycache__/
+git.txt
+push_git.sh
 *~
 *#
 *.pyc
-git.txt
-
