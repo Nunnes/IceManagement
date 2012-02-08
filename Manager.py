@@ -1,6 +1,11 @@
 #!/usr/bin/env python
 import Client
 
+import DataBase
+
+# ligacao ah base de dados
+DB = DataBase.DataBase('localhost', 'ice_manager', 'ice', 'ice_db');
+
 clientList = []
 
 class Manager:
@@ -9,14 +14,25 @@ class Manager:
     def __init__(self):
         '''Initializes the Data manager'''
         print 'Voodoo magic is about to happen!'
+
+    def closeDb (self):
+        DB.closeDb()
  
+    # imprime a lista de clientes
     def printClientList(self):
+	print ("Client List: ")
+        clist = DB.listClient()
+
+        for c in clist:
+            print (c)
+
+        '''
         i=0
 	print ("Client List: ")
         for cl in clientList:
             i+=1
             print ("%d - %s"  % (i, cl.name ))
-
+        '''
     def createClient(self):
         '''Create a client'''
         name = raw_input("Nome do Cliente: ")

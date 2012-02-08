@@ -16,12 +16,24 @@ class DataBase:
         self.nc = 0 
         self.setNumClient()
 
+    def closeDb(self):
+        self.conn.close()
+
     # change nc
     def setNumClient(self):
         cur = self.conn.cursor()
         cur.execute("SELECT COUNT(*) FROM customer")
         nc_t = cur.fetchall() # retorna uma lista de tuples
         self.nc = nc_t[0][0] # a primeira entrada do primeiro tuple
+        cur.close()
+
+    # return list of clients
+    def listClient(self):
+        cur = self.conn.cursor()
+        cur.execute("SELECT * FROM customer")
+        listc = cur.fetchall() # retorna uma lista de tuples
+        cur.close()
+        return listc
 
     # add new client
     #def addClient(self):
