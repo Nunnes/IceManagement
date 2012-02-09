@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import Transaction
 
 class Client:
 	'''Represents a Client.'''
@@ -51,13 +52,11 @@ class Client:
 	def buyIce(self):
 		quant = input("Quantity: ")
 		price = input("Price: ")
-		optional = input("Fiado s/N: ")
+		optional = raw_input("Fiado y/N: ")
 		
 		fiado = False
 
-		if optional == "s":
+		if optional.lower().strip()  == 'y':
 			fiado = True
-		elif optional == "n":
-			fiado = False
 
-		self.transactionList.append(Transaction(quant, price, fiado))
+		self.transactionList.append(Transaction.Transaction(quant, price, fiado))
