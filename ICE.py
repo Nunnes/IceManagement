@@ -3,6 +3,7 @@
 import io
 import sys
 import Manager
+import ClientDTO
 
 ListaClientes = []
 Man = Manager.Manager()
@@ -38,14 +39,21 @@ def menu():
 
 		
 	elif(cmd == 1):
+		''' Receive Client info '''
 		
-	    	Man.createClient()
-		Man.printClientList()
+		name = raw_input("First name: ")
+		lastName = raw_input("Last name: ")
+		phone =  input("Phone: ")
+		email = raw_input("Email: ")
+		clientDTO = ClientDTO.ClientDTO(name, lastName, phone, email)
+		Man.createClient(clientDTO) 
 
 		
 	elif(cmd == 2):
-		Man.removeClient()
-		Man.printClientList()
+		name = raw_input("First name: ")
+		lastName = raw_input("Last name: ")
+		clientDTO = ClientDTO.ClientDTO(name, lastName)
+		Man.removeClient(clientDTO)
 		
 
 	elif(cmd == 3):
@@ -53,11 +61,11 @@ def menu():
 
 
 	elif(cmd == 4):
-		print("3 - Registar Compra")
+		print("4 - Registar Compra")
 
 
 	elif(cmd == 5):
-		print("4 - Ver Fiados")
+		print("5 - Ver Fiados")
 
 
 	elif(cmd == 6):

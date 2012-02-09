@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-import Client
 
+import ClientDTO
 import DataBase
 
 # ligacao ah base de dados
@@ -26,32 +26,22 @@ class Manager:
         for c in clist:
             print (c)
 
-        '''
-        i=0
-	print ("Client List: ")
-        for cl in clientList:
-            i+=1
-            print ("%d - %s"  % (i, cl.name ))
-        '''
-    def createClient(self):
-        '''Create a client'''
-        name = raw_input("Nome do Cliente: ")
-        clientList.append(Client.Client(name))
-        print ("\n Client " + name + " was born! \n")
-       
-    def removeClient(self):
+    #Cria Client
+    def createClient(self, clientDTO):
+        '''Create client'''
+        '''falta chamar o db manager e colocar na db ''' 
+        print ("\n Client + %s +  was born! \n" % clientDTO.firstname  )
+        
+        
+    #Remove Client
+    def removeClient(self, clientDTO):
         '''Remove Client from database'''
-        name = raw_input("Nome do Cliente a remover: ")
+        print ("Client %s removed" % clientDTO.firstname)
 
-        #procura cliente
-        for cl in clientList:
-            if(cl.name == name):
-                cl.delete() # como eliminar objecto???
-                clientList.remove(cl)
 
-    def changeName(self):
-        name = raw_input("Nome do Cliente a remover: ")
+    def changeName(self, clientDTO):
         #procura cliente
+        
         for cl in clientList:
             if(cl.name == name):
                 cl.setName(name)

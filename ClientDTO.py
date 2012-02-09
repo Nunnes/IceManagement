@@ -1,12 +1,9 @@
 #!/usr/bin/env python
 
-class Client:
+class ClientDTO:
 	'''Represents a Client.'''
-	population = 0
-	
 
-	def __init__(self,firstname, lastname, phone, email):
-		'''Initializes the person's data.'''
+	def __init__(self, firstname='null', lastname='null', phone= 0, email='null'):
 		self.firstname = firstname
 		self.lastname = lastname
 		self.phone = phone
