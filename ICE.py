@@ -4,8 +4,8 @@ import io
 import sys
 import Manager
 import ClientDTO
+import TransactionDTO
 
-ListaClientes = []
 Man = Manager.Manager()
 
 def main():
@@ -35,7 +35,20 @@ def menu():
 		
 	if(cmd == 0):
 		print ("Venda: \n")
-		Man.makeTransaction()
+		clientName = raw_input("Client: ")
+		price = input("Price: ")
+		quantity = input("Quantity: ")
+		credit = raw_input("Credit (y/N): ")
+
+		#provavelmente isto vai ser feito pelo manager
+		if(credit.lower().strip() == 'y'):
+			credit = True;
+		else: 
+			credit = False;
+		#até aqui <----------------------------------
+
+		transactionDTO = TransactionDTO.TransactionDTO(clientName, quantity, price, credit)
+		Man.makeTransaction(transactionDTO)
 
 		
 	elif(cmd == 1):

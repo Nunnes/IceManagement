@@ -3,9 +3,9 @@
 class TransactionDTO:
 	''' Clients' transactions and debts ''' 
 	
-	def __init__(self, clientName, quantity, price, fiado = False):
+	def __init__(self, clientName, quantity, price, credit = False):
 		'''transaction data transfer objet'''
 		self.quantity = quantity
 		self.price = price
-		self.fiado = fiado
+		self.credit = credit
                 self.clientName = clientName
