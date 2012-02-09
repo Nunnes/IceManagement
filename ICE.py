@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-import MySQLdb
 import io
 import sys
 import Manager
@@ -61,6 +60,7 @@ def menu():
 
 
 	elif(cmd == 6):
+		Man.closeDb() # disconecta da BD
 		print("Bye")
 		exit()
 				
