@@ -22,7 +22,7 @@ class DataBase:
     # change nc
     def setNumClient(self):
         cur = self.conn.cursor()
-        cur.execute("SELECT COUNT(*) FROM customer")
+        cur.execute("SELECT COUNT(*) FROM Customer")
         nc_t = cur.fetchall() # retorna uma lista de tuples
         self.nc = nc_t[0][0] # a primeira entrada do primeiro tuple
         cur.close()
@@ -30,7 +30,7 @@ class DataBase:
     # return list of clients
     def listClient(self):
         cur = self.conn.cursor()
-        cur.execute("SELECT * FROM customer")
+        cur.execute("SELECT * FROM Customer")
         listc = cur.fetchall() # retorna uma lista de tuples
         cur.close()
         return listc
