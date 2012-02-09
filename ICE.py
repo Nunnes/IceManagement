@@ -38,6 +38,7 @@ def menu():
 
 		
 	elif(cmd == 1):
+		
 	    	Man.createClient()
 		Man.printClientList()
 

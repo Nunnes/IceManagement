@@ -6,7 +6,7 @@ class Client:
 	population = 0
 	
 
-	def __init__(self, name,):
+	def __init__(self, name):
 		'''Initializes the person's data.'''
 		self.name = name
 		print ("(Initializing %s)" % self.name)
