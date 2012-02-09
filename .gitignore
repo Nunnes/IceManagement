@@ -2,6 +2,7 @@ misc/
 __pycache__/
 git.txt
 push_git.sh
+rm_stuff.sh
 *~
 *#
 *.pyc
