@@ -35,7 +35,26 @@ class DataBase:
         cur.close()
         return listc
 
-    # add new client
-    #def addClient(self):
+    #add new client
+    #def addClient(self, clientDTO):
 
-    # add new 
+    #remove client
+    #def removeClient(self, clientDTO)
+
+    # add new transaction
+    #def addTransaction(self, transactionDTO):
+
+    #return a clientDTO
+    #def getClient(self, clientDTO):
+    
+    #return a TransactionDTO
+    #def getTransactionDTO(self, clientDTO)
+
+    #list of a client's credit transactions
+    #def getClientCredit(self, clientDTO):
+    
+    # pay credit -> change credit to false
+    # pay a transaction
+    #def setTransactionCredit(self, credit=false)
+
+    

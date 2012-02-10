@@ -8,25 +8,30 @@ import TransactionDTO
 
 Man = Manager.Manager()
 
+mainMenuList = ["1 - Create Client","2 - Remove Client", "3 - Clients' list","4 - Regist transaction", "5 - Debts","6 - Pay credit", "7 - Exit", "\n"]
+
+subMenuDebtsList = ["1 - List clients with credit", "2 - Pay debt", "3 - back to main menu", "\n"]
+
+subMenuList = ["putt", "stuff", "here!"]
+
+
+def printMenuList(MenuList):
+	for option in MenuList:
+		print(option)
+	
 def main():
 	
-
-	while True:
+	while(True):
 		print("\n Welcome to the ICE") 
 		menu()	
 	return 0
 
+#Menu Principal
 def menu():
 	
-	print("0 - Venda")
-	print("1 - Create Client")
-	print("2 - Remove Client")
-	print("3 - Clients' list")
-	print("4 - Register")
-	print("5 - Debts")
-	print("6 - Exit")
-	print ("\n")
-	
+	#imprime mainMenu
+	printMenuList(mainMenuList)
+
 	try:
 		sys.stdout.flush()
 		cmd =  input("Please enter a value:")
@@ -34,35 +39,23 @@ def menu():
 		print("Not an option. Try other stuff! ")
 		
 	if(cmd == 0):
-		print ("Venda: \n")
-		clientName = raw_input("Client: ")
-		price = input("Price: ")
-		quantity = input("Quantity: ")
-		credit = raw_input("Credit (y/N): ")
-
-		#provavelmente isto vai ser feito pelo manager
-		if(credit.lower().strip() == 'y'):
-			credit = True;
-		else: 
-			credit = False;
-		#até aqui <----------------------------------
-
-		transactionDTO = TransactionDTO.TransactionDTO(clientName, quantity, price, credit)
-		Man.makeTransaction(transactionDTO)
+		print("subMenu...")
+		subMenu()
 
 		
 	elif(cmd == 1):
-		''' Receive Client info '''
-		
+		#receive info to create a client
 		name = raw_input("First name: ")
 		lastName = raw_input("Last name: ")
 		phone =  input("Phone: ")
 		email = raw_input("Email: ")
+
 		clientDTO = ClientDTO.ClientDTO(name, lastName, phone, email)
 		Man.createClient(clientDTO) 
 
 		
 	elif(cmd == 2):
+		#receive info to delete a specific client
 		name = raw_input("First name: ")
 		lastName = raw_input("Last name: ")
 		clientDTO = ClientDTO.ClientDTO(name, lastName)
@@ -70,18 +63,32 @@ def menu():
 		
 
 	elif(cmd == 3):
+		#Print Client List
 		Man.printClientList()
 
 
 	elif(cmd == 4):
 		print("4 - Registar Compra")
+	        
+                #cria uma venda
+		print ("Venda")
+		clientName = raw_input("Client: ")
+		price = input("Price: ")
+		quantity = input("Quantity: ")
+		credit = raw_input("Credit (y/N): ")
+
+		transactionDTO = TransactionDTO.TransactionDTO(clientName, quantity, price, credit)
+		Man.makeTransaction(transactionDTO)
 
 
 	elif(cmd == 5):
-		print("5 - Ver Fiados")
-
+		subMenuDebts()
 
 	elif(cmd == 6):
+		print("6 - Pagar fiado")
+	
+	
+	elif(cmd == 7):
 		Man.closeDb() # disconecta da BD
 		print("Bye")
 		exit()
@@ -89,7 +96,52 @@ def menu():
 	else:
 		print("Command not available!")
 
+
+#SubMenu dos Fiados
+def subMenuDebts():
+	
+	while(True):
+		printMenuList(subMenuDebtsList)
 		
+		try:
+			sys.stdout.flush()
+			cmd =  input("Please enter an option:")
+		except:
+			print("Not an option. Try other stuff! ")
+			
+		if(cmd == 1):
+			print("List Clients with credit")
+
+		elif(cmd == 2):
+			print("Pay something!")
+
+		elif(cmd == 3):
+			print("Back to main menu")
+			break
+
+		
+#subMenu para usar no futuro
+def subMenu():
+	while(True):
+		printMenuList(subMenuList)
+		
+		try:
+			sys.stdout.flush()
+			cmd =  input("Please enter an option:")
+		except:
+			print("Not an option. Try other stuff! ")
+			
+		if(cmd == 1):
+			print("List Clients with credit")
+
+		elif(cmd == 2):
+			print("Pay something!")
+
+		elif(cmd == 3):
+			print("Back to main menu")
+			break
+				
+
 if __name__ == '__main__':
 	main()
 	
