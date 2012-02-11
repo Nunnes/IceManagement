@@ -42,11 +42,13 @@ class DataBase:
     #def removeClient(self, clientDTO)
 
     # add new transaction
-    #def addTransaction(self, transactionDTO):
+    def addTransaction(self, transactionDTO):
+        print("to implement")
 
     #return a clientDTO
-    #def getClient(self, clientDTO):
-    
+    def getClient(self, clientDTO):
+        print("to implement")
+
     #return a TransactionDTO
     #def getTransactionDTO(self, clientDTO)
 
