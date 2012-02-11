@@ -39,7 +39,7 @@ class Manager:
         print ("Client %s removed" % clientDTO.firstname)
       
 
-    def calcAVG(self, clientName, frequency):
+     def calcAVG(self, clientName, frequency):
         '''calculates average incomes from a client over weeks, day...'''
 
 
@@ -54,11 +54,9 @@ class Manager:
             else: 
                 print ("Client not found!\n")
 
-
+    #Insert Transaction in DB
     def makeTransaction(self , transactionDTO):
-       '''Makes a transaction '''
-       print(" Transaction created for client %s" % transactionDTO.clientName)
+       addTransaction(transactionDTO)
     
 
-    
     

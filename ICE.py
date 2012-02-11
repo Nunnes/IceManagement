@@ -8,10 +8,10 @@ import TransactionDTO
 
 Man = Manager.Manager()
 
+
+# Listas para os menus 
 mainMenuList = ["1 - Create Client","2 - Remove Client", "3 - Clients' list","4 - Regist transaction", "5 - Debts","6 - Pay credit", "7 - Exit", "\n"]
-
 subMenuDebtsList = ["1 - List clients with credit", "2 - Pay debt", "3 - back to main menu", "\n"]
-
 subMenuList = ["putt", "stuff", "here!"]
 
 
@@ -41,7 +41,6 @@ def menu():
 	if(cmd == 0):
 		print("subMenu...")
 		subMenu()
-
 		
 	elif(cmd == 1):
 		#receive info to create a client
@@ -53,7 +52,6 @@ def menu():
 		clientDTO = ClientDTO.ClientDTO(name, lastName, phone, email)
 		Man.createClient(clientDTO) 
 
-		
 	elif(cmd == 2):
 		#receive info to delete a specific client
 		name = raw_input("First name: ")
@@ -61,11 +59,9 @@ def menu():
 		clientDTO = ClientDTO.ClientDTO(name, lastName)
 		Man.removeClient(clientDTO)
 		
-
 	elif(cmd == 3):
 		#Print Client List
 		Man.printClientList()
-
 
 	elif(cmd == 4):
 		print("4 - Registar Compra")
@@ -86,7 +82,6 @@ def menu():
 
 	elif(cmd == 6):
 		print("6 - Pagar fiado")
-	
 	
 	elif(cmd == 7):
 		Man.closeDb() # disconecta da BD
