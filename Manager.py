@@ -35,6 +35,7 @@ class Manager:
     #Remove Client
     def removeClient(self, clientDTO):
         '''Remove Client from database'''
+        DB.rmClient(clientDTO)
         print ("Client %s removed" % clientDTO.firstname)
       
 
