@@ -28,8 +28,7 @@ class Manager:
 
     #Cria Client
     def createClient(self, clientDTO):
-        '''Create client'''
-        '''falta chamar o db manager e colocar na db ''' 
+        DB.addClient(clientDTO)
         print ("\n Client %s was born! \n" % clientDTO.firstname  )
         
         
@@ -39,7 +38,7 @@ class Manager:
         print ("Client %s removed" % clientDTO.firstname)
       
 
-     def calcAVG(self, clientName, frequency):
+    def calcAVG(self, clientName, frequency):
         '''calculates average incomes from a client over weeks, day...'''
 
 
