@@ -38,12 +38,23 @@ class DataBase:
     #add new client
     #def addClient(self, clientDTO):
 
+
     #remove client
-    #def removeClient(self, clientDTO)
+    #def removeClient(self, clientDTO):
 
     # add new transaction
     def addTransaction(self, transactionDTO):
-        print("to implement")
+       # cur = self.conn.cursor()
+        #cur.execute("INSERT INTO Transaction VALUES (1, 2, 23.00, false, '2010-03-12', 1)")
+       # cur.close()
+       # print("Inserted")
+
+    #def calcDebt(self, ClientName):
+        #'''Calculates total debt of a costumer'''
+
+
+    #def listClientDebt(self,name):
+        
 
     #return a clientDTO
     def getClient(self, clientDTO):

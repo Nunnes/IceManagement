@@ -9,7 +9,7 @@ DB = DataBase.DataBase('localhost', 'ice_manager', 'ice', 'ice_db');
 
 
 class Manager:
-    '''Represents a Data Manager: trata da base de dados e da logica de negocio''' 
+    '''Represents Manager: trata da base de dados e da logica de negocio''' 
     
     def __init__(self):
         '''Initializes the Data manager'''
@@ -29,34 +29,32 @@ class Manager:
     #Cria Client
     def createClient(self, clientDTO):
         '''Create client'''
-        '''falta chamar o db manager e colocar na db ''' 
+        addClient(clientDTO) 
         print ("\n Client %s was born! \n" % clientDTO.firstname  )
         
         
     #Remove Client
     def removeClient(self, clientDTO):
         '''Remove Client from database'''
+        removeClient(clientDTO)
         print ("Client %s removed" % clientDTO.firstname)
       
 
-     def calcAVG(self, clientName, frequency):
-        '''calculates average incomes from a client over weeks, day...'''
+    def calcAVG(self, clientDTO, frequency):
+         '''calculates average incomes from a client over weeks, day...'''
 
 
-    def calcDebt(self, ClientName):
+    def calcDebt(self, clientDTO):
         '''Calculates total debt of a costumer'''
 
 
-    def listClientDebt(self,name):
-        for cl in clientList:
-            if(cl.name == name):
-                cl.printTransactionList()
-            else: 
-                print ("Client not found!\n")
-
+    def listClientDebt(self, clientDTO):
+        '''ainda nao faz nada'''
+        
     #Insert Transaction in DB
-    def makeTransaction(self , transactionDTO):
-       addTransaction(transactionDTO)
+    def makeTransaction(self, transactionDTO):
+      DB. addTransaction(transactionDTO)
     
-
+    
+    
     
