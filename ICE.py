@@ -9,8 +9,19 @@ Man = Manager.Manager()
 
 
 # Listas para os menus 
-mainMenuList = ["1 - Create Client","2 - Remove Client", "3 - Clients' list","4 - Regist transaction", "5 - Debts","6 - Pay credit", "7 - Exit", "\n"]
-subMenuDebtsList = ["1 - List clients with credit", "2 - Pay debt", "3 - back to main menu", "\n"]
+mainMenuList = ["1 - Create Client",
+		"2 - Remove Client", 
+		"3 - Clients' list",
+		"4 - Regist transaction", 
+		"5 - Debts","6 - Pay credit", 
+		"7 - Exit", 
+		"\n"]
+
+subMenuDebtsList = ["1 - List clients with credit", 
+		    "2 - Pay debt", 
+		    "3 - back to main menu", 
+		    "\n"]
+
 subMenuList = ["putt", "stuff", "here!"]
 
 
@@ -19,7 +30,7 @@ def printMenuList(MenuList):
 		print(option)
 	
 def main():
-	
+
 	while(True):
 		print("\n Welcome to the ICE") 
 		menu()	

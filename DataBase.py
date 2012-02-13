@@ -19,6 +19,39 @@ class DataBase:
     def closeDb(self):
         self.conn.close()
 
+    #func interna para determinar qual o maior id
+    def maxId (self):
+        cur = self.conn.cursor()
+        cur.execute("SELECT MAX(id) FROM Customer")
+        nc_t = cur.fetchall() # retorna uma lista de tuples
+        cur.close()
+        return nc_t[0][0]
+
+    # add new client
+    # dif py3 [:-1]
+    def addClient(self, clientDTO):
+        cur = self.conn.cursor()
+        query_str = "INSERT INTO Customer" + \
+            " VALUES(" + \
+            " " + repr(self.maxId()+1)[:-1] + "," + \
+            " '" + clientDTO.firstname + "'," + \
+            " '" + clientDTO.lastname + "'," + \
+            " " + repr(clientDTO.phone)  + "," + \
+            " '" + clientDTO.email + "'" + \
+            " )"
+        cur.execute(query_str)
+        cur.close()
+
+    # remove a client
+    def rmClient(self, clientDTO):
+        cur = self.conn.cursor()
+        query_str = "DELETE FROM Customer WHERE" + \
+            " first_name = '" + clientDTO.firstname + "'" + \
+            " AND" + \
+            " last_name = '" + clientDTO.lastname + "'"
+        cur.execute(query_str)
+        cur.close()
+
     # change nc
     def setNumClient(self):
         cur = self.conn.cursor()
@@ -27,6 +60,10 @@ class DataBase:
         self.nc = nc_t[0][0] # a primeira entrada do primeiro tuple
         cur.close()
 
+
+
+
+        
     # return list of clients
     def listClient(self):
         cur = self.conn.cursor()
@@ -34,6 +71,7 @@ class DataBase:
         listc = cur.fetchall() # retorna uma lista de tuples
         cur.close()
         return listc
+<<<<<<< HEAD
 
     #add new client
     #def addClient(self, clientDTO):
@@ -41,6 +79,9 @@ class DataBase:
 
     #remove client
     #def removeClient(self, clientDTO):
+=======
+    
+>>>>>>> b5be4a4cbea1d8100a854b25f26e1d8115f45651
 
     # add new transaction
     def addTransaction(self, transactionDTO):
