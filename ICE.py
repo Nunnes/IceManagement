@@ -78,12 +78,13 @@ def menu():
 	        
                 #cria uma venda
 		print ("Venda")
-		clientName = raw_input("Client: ")
+		clientFirstName = raw_input("First Client Name: ")
+		clientLastName = raw_input("Last Client Name: ")
 		price = input("Price: ")
 		quantity = input("Quantity: ")
 		credit = raw_input("Credit (y/N): ")
 
-		transactionDTO = TransactionDTO.TransactionDTO(clientName, quantity, price, credit)
+		transactionDTO = TransactionDTO.TransactionDTO(clientFirstName, clientLastName, quantity, price, credit)
 		Man.makeTransaction(transactionDTO)
 
 

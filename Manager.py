@@ -52,7 +52,7 @@ class Manager:
         
     #Insert Transaction in DB
     def makeTransaction(self, transactionDTO):
-      DB. addTransaction(transactionDTO)
+      DB.addTransaction(transactionDTO)
     
     
     
