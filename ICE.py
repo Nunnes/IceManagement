@@ -9,11 +9,12 @@ Man = Manager.Manager()
 
 
 # Listas para os menus 
-mainMenuList = ["1 - Create Client",
-		"2 - Remove Client", 
-		"3 - Clients' list",
-		"4 - Regist transaction", 
-		"5 - Debts","6 - Pay credit", 
+mainMenuList = ["1 - Registar client",
+		"2 - Remover cliente", 
+		"3 - Lista de clientes",
+		"4 - Registar venda",
+		"5 - Listar vendas",
+		"6 - Fiados",
 		"7 - Exit", 
 		"\n"]
 
@@ -63,21 +64,19 @@ def menu():
 		Man.createClient(clientDTO) 
 
 	elif(cmd == 2):
-		#receive info to delete a specific client
+		#Elimina um cliente da base de dados
 		name = raw_input("First name: ")
 		lastName = raw_input("Last name: ")
 		clientDTO = ClientDTO.ClientDTO(name, lastName)
 		Man.removeClient(clientDTO)
 		
 	elif(cmd == 3):
-		#Print Client List
+		#Imprime lista de clientes
 		Man.printClientList()
 
 	elif(cmd == 4):
-		print("4 - Registar Compra")
-	        
                 #cria uma venda
-		print ("Venda")
+		print ("Venda:")
 		clientName = raw_input("Client: ")
 		price = input("Price: ")
 		quantity = input("Quantity: ")
@@ -88,18 +87,20 @@ def menu():
 
 
 	elif(cmd == 5):
-		subMenuDebts()
+		Man.printTransactionList()
+
 
 	elif(cmd == 6):
-		print("6 - Pagar fiado")
-	
+		#subMenu dos fiados
+		subMenuDebts()
+
 	elif(cmd == 7):
-		Man.closeDb() # disconecta da BD
-		print("Bye")
+		Man.closeDb()  #disconecta da BD
+		print("Adeus")
 		exit()
 				
 	else:
-		print("Command not available!")
+		print("Comando incorrecto!")
 
 
 #SubMenu dos Fiados
@@ -116,13 +117,18 @@ def subMenuDebts():
 			
 		if(cmd == 1):
 			print("List Clients with credit")
-
+			Man.listClient_with_Debt()
+			
 		elif(cmd == 2):
 			print("Pay something!")
 
 		elif(cmd == 3):
 			print("Back to main menu")
 			break
+
+
+
+
 
 		
 #subMenu para usar no futuro

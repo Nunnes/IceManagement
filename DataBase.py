@@ -16,14 +16,19 @@ class DataBase:
         self.nc = 0 
         self.setNumClient()
 
+    #Faz commit da BD e fecha o conector
     def closeDb(self):
+        self.conn.commit()
         self.conn.close()
+        
 
     #func interna para determinar qual o maior id
-    def maxId (self):
+    def maxId (self, table):
         cur = self.conn.cursor()
-        cur.execute("SELECT MAX(id) FROM Customer")
-        nc_t = cur.fetchall() # retorna uma lista de tuples
+        query_str = "SELECT MAX(id) FROM %s" % table 
+        #"SELECT MAX(id) FROM Customer"
+        cur.execute(query_str)
+        nc_t = cur.fetchall() #retorna uma lista de tuples
         cur.close()
         return nc_t[0][0]
 
@@ -33,7 +38,7 @@ class DataBase:
         cur = self.conn.cursor()
         query_str = "INSERT INTO Customer" + \
             " VALUES(" + \
-            " " + repr(self.maxId()+1)[:-1] + "," + \
+            " " + repr(self.maxId("Customer")+1)[:-1] + "," + \
             " '" + clientDTO.firstname + "'," + \
             " '" + clientDTO.lastname + "'," + \
             " " + repr(clientDTO.phone)  + "," + \
@@ -61,9 +66,17 @@ class DataBase:
         cur.close()
 
 
-
-
+    #fazer parse do nome ? ou acrescentar mais first e last name no DTO
+    def getClientID(clienDTO):
+        cur = self.conn.cursor()
         
+        query_str = "SELECT * FROM Customer" 
+        cur.execute(query_str)
+        results = cur.fetchall() #retorna uma lista de tuples
+        cur.close()
+        return results[0][0]
+
+
     # return list of clients
     def listClient(self):
         cur = self.conn.cursor()
@@ -71,35 +84,60 @@ class DataBase:
         listc = cur.fetchall() # retorna uma lista de tuples
         cur.close()
         return listc
-<<<<<<< HEAD
 
-    #add new client
-    #def addClient(self, clientDTO):
-
-
-    #remove client
-    #def removeClient(self, clientDTO):
-=======
     
->>>>>>> b5be4a4cbea1d8100a854b25f26e1d8115f45651
+
 
     # add new transaction
-    def addTransaction(self, transactionDTO):
-       # cur = self.conn.cursor()
-        #cur.execute("INSERT INTO Transaction VALUES (1, 2, 23.00, false, '2010-03-12', 1)")
-       # cur.close()
-       # print("Inserted")
+    def addTransaction(self, transactionDTO, clientDTO):
+        ''' Add transaction to db'''
+        cur = self.conn.cursor()
+        #select client ID to insert in the transaction
+        clientID = self.getClientID(clientDTO)
+        query_str = "INSERT INTO Transaction" + \
+            " VALUES(" + \
+            " " + repr(self.maxId("Transactions")+1)[:-1] + "," + \
+            " " + repr(transactionDTO.quantity) + "," + \
+            " " + repr(transactionDTO.price) + "," + \
+            " " + repr(transactionDTO.credit) + "," + \
+            " " + " SYSDATE," + \ 
+            " " + clientID + "," + \
+            " )"
+        cur.execute(query_str)
+        cur.close()
+
+
+        
+    #return list of all transactions ordered by date 
+    def listTransaction(self):
+        cur = self.conn.cursor()
+        cur.execute("SELECT * FROM Transaction ORDER BY data_transaction")
+        listc = cur.fetchall() #retorna uma lista de tuples
+        cur.close()
+        return listc
+
+
+    #retorna lista de clientes com fiados
+    def listClient_with_Debt(self):
+        cur = self.conn.cursor()
+        cur.execute("SELECT first_name, price, data_transaction, amount  FROM Customer, Transaction WHERE Transaction.on_credit= true AND Transaction.customer_id = Customer.id ORDER BY data_transaction ")
+        listc = cur.fetchall() #retorna uma lista de tuples
+        cur.close()
+        return listc
+
 
     #def calcDebt(self, ClientName):
         #'''Calculates total debt of a costumer'''
 
 
-    #def listClientDebt(self,name):
+    #def listClientDebt(self,clientDTO):
+        
+        
         
 
     #return a clientDTO
-    def getClient(self, clientDTO):
-        print("to implement")
+    #def getClient(self, clientDTO):
+       #print("to implement")
 
     #return a TransactionDTO
     #def getTransactionDTO(self, clientDTO)
