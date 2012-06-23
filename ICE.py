@@ -76,13 +76,19 @@ def menu():
 
 	elif(cmd == 4):
                 #cria uma venda
+<<<<<<< HEAD
 		print ("Venda:")
 		clientName = raw_input("Client: ")
+=======
+		print ("Venda")
+		clientFirstName = raw_input("First Client Name: ")
+		clientLastName = raw_input("Last Client Name: ")
+>>>>>>> fcacf8700c4515c63fd13b996896d1c6d937825b
 		price = input("Price: ")
 		quantity = input("Quantity: ")
 		credit = raw_input("Credit (y/N): ")
 
-		transactionDTO = TransactionDTO.TransactionDTO(clientName, quantity, price, credit)
+		transactionDTO = TransactionDTO.TransactionDTO(clientFirstName, clientLastName, quantity, price, credit)
 		Man.makeTransaction(transactionDTO)
 
 

@@ -23,12 +23,19 @@ class DataBase:
         
 
     #func interna para determinar qual o maior id
+<<<<<<< HEAD
     def maxId (self, table):
         cur = self.conn.cursor()
         query_str = "SELECT MAX(id) FROM %s" % table 
         #"SELECT MAX(id) FROM Customer"
         cur.execute(query_str)
         nc_t = cur.fetchall() #retorna uma lista de tuples
+=======
+    def maxId (self, str_table):
+        cur = self.conn.cursor()
+        cur.execute("SELECT MAX(id) FROM " + str_table)
+        nc_t = cur.fetchall() # retorna uma lista de tuples
+>>>>>>> fcacf8700c4515c63fd13b996896d1c6d937825b
         cur.close()
         return nc_t[0][0]
 
@@ -66,6 +73,7 @@ class DataBase:
         cur.close()
 
 
+<<<<<<< HEAD
     #fazer parse do nome ? ou acrescentar mais first e last name no DTO
     def getClientID(clienDTO):
         cur = self.conn.cursor()
@@ -77,6 +85,9 @@ class DataBase:
         return results[0][0]
 
 
+=======
+        
+>>>>>>> fcacf8700c4515c63fd13b996896d1c6d937825b
     # return list of clients
     def listClient(self):
         cur = self.conn.cursor()
@@ -85,6 +96,7 @@ class DataBase:
         cur.close()
         return listc
 
+<<<<<<< HEAD
     
 
 
@@ -102,11 +114,47 @@ class DataBase:
             " " + repr(transactionDTO.credit) + "," + \
             " " + " SYSDATE," + \ 
             " " + clientID + "," + \
+=======
+    # get client id
+    def getClientId(self, firstName, lastName):
+        cur = self.conn.cursor()
+        cur.execute("SELECT id FROM Customer WHERE first_name = '" 
+                    + firstName + "' AND last_name = '" + lastName + "'")
+        id_t = cur.fetchall() # retorna uma lista de tuples
+        id_int = id_t[0][0] # a primeira entrada do primeiro tuple
+        cur.close()
+        return id_int
+
+
+    # add new transaction
+    def addTransaction(self, transactionDTO):
+        cur = self.conn.cursor()
+
+        # saber qual o id do cliente
+        client_id = self.getClientId(transactionDTO.clientFirstName, 
+                                transactionDTO.clientLastName)
+
+        # Passar para inteiro e depois string o credito
+        if (transactionDTO.credit):
+            credit = "true"
+        else:
+            credit = "false"
+
+        query_str = "INSERT INTO Transaction" + \
+            " VALUES(" + \
+            " " + repr(self.maxId("Transaction")+1)[:-1] + "," + \
+            " " + repr(transactionDTO.quantity) + "," + \
+            " " + repr(transactionDTO.price) + "," + \
+            " " + credit + "," + \
+            " '" + "2010-03-12" + "'," + \
+            " " + repr(client_id)[:-1] + \
+>>>>>>> fcacf8700c4515c63fd13b996896d1c6d937825b
             " )"
         cur.execute(query_str)
         cur.close()
 
 
+<<<<<<< HEAD
         
     #return list of all transactions ordered by date 
     def listTransaction(self):
@@ -125,6 +173,11 @@ class DataBase:
         cur.close()
         return listc
 
+=======
+        #cur.execute("INSERT INTO Transaction VALUES (1, 2, 23.00, false, '2010-03-12', 1)")
+       # cur.close()
+       # print("Inserted")
+>>>>>>> fcacf8700c4515c63fd13b996896d1c6d937825b
 
     #def calcDebt(self, ClientName):
         #'''Calculates total debt of a costumer'''
@@ -136,8 +189,14 @@ class DataBase:
         
 
     #return a clientDTO
+<<<<<<< HEAD
     #def getClient(self, clientDTO):
        #print("to implement")
+=======
+        
+    def getClient(self, clientDTO):
+        print("to implement")
+>>>>>>> fcacf8700c4515c63fd13b996896d1c6d937825b
 
     #return a TransactionDTO
     #def getTransactionDTO(self, clientDTO)

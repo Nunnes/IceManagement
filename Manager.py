@@ -79,3 +79,17 @@ class Manager:
     def calcDebt(self, clientDTO):
         '''Calculates total debt of a costumer'''
 
+<<<<<<< HEAD
+=======
+
+    def listClientDebt(self, clientDTO):
+        '''ainda nao faz nada'''
+        
+    #Insert Transaction in DB
+    def makeTransaction(self, transactionDTO):
+      DB.addTransaction(transactionDTO)
+    
+    
+    
+    
+>>>>>>> fcacf8700c4515c63fd13b996896d1c6d937825b
