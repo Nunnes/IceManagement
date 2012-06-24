@@ -84,19 +84,19 @@ class DataBase:
         return listc
 
     # add new transaction
-    def addTransaction(self, transactionDTO, clientDTO):
-        ''' Add transaction to db'''
-        cur = self.conn.cursor()
-        #select client ID to insert in the transaction
-        clientID = self.getClientID(clientDTO)
-        query_str = "INSERT INTO Transaction" + \
-            " VALUES(" + \
-            " " + repr(self.maxId("Transactions")+1)[:-1] + "," + \
-            " " + repr(transactionDTO.quantity) + "," + \
-            " " + repr(transactionDTO.price) + "," + \
-            " " + repr(transactionDTO.credit) + "," + \
-            " " + " SYSDATE," + \ 
-            " " + clientID + "," + \
+   # def addTransaction(self, transactionDTO, clientDTO):
+    #    ''' Add transaction to db'''
+     #   cur = self.conn.cursor()
+      #  #select client ID to insert in the transaction
+       # clientID = self.getClientID(clientDTO)
+       # query_str = "INSERT INTO Transaction" + \
+       #     " VALUES(" + \
+        #    " " + repr(self.maxId("Transactions")+1)[:-1] + "," + \
+         #   " " + repr(transactionDTO.quantity) + "," + \
+          #  " " + repr(transactionDTO.price) + "," + \
+           # " " + repr(transactionDTO.credit) + "," + \
+           # " " + " SYSDATE," + \ 
+           # " " + clientID + "," + \
 
     # get client id
     def getClientId(self, firstName, lastName):
@@ -166,14 +166,8 @@ class DataBase:
         
 
     #return a clientDTO
-<<<<<<< HEAD
-    #def getClient(self, clientDTO):
-       #print("to implement")
-=======
-        
     def getClient(self, clientDTO):
         print("to implement")
->>>>>>> fcacf8700c4515c63fd13b996896d1c6d937825b
 
     #return a TransactionDTO
     #def getTransactionDTO(self, clientDTO)
